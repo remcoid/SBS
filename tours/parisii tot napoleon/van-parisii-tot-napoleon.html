@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Van Parisii tot Napoleon — 2000 Jaar Parijs in één Wandelroute</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  /* header */
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    border-radius: 16px;
+    color: #fff;
+  }
+  header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: .5rem; }
+  header p { font-size: 1rem; opacity: .85; }
+  header .meta {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+    margin-top: 1rem; font-size: .9rem; opacity: .8;
+  }
+  header .meta span { white-space: nowrap; }
+
+  /* section header */
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: .4rem;
+    border-bottom: 3px solid #302b63;
+    display: inline-block;
+  }
+
+  /* stop card */
+  .stop {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .stop-head {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1.25rem;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .stop-head .num {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    font-size: .9rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .stop-head .periode {
+    font-size: .78rem;
+    font-weight: 400;
+    opacity: .85;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .red .stop-head { background: #c0392b; }
+  .orange .stop-head { background: #d35400; }
+  .brown .stop-head { background: #5d4037; }
+  .green .stop-head { background: #27ae60; }
+  .blue .stop-head { background: #1E90FF; }
+  .purple .stop-head { background: #8e44ad; }
+
+  .stop-body { padding: 1rem 1.25rem; }
+  .stop-body p { margin-bottom: .6rem; font-size: .92rem; }
+  .stop-body p:last-child { margin-bottom: 0; }
+
+  .loc { font-size: .85rem; color: #666; margin-bottom: .5rem; }
+  .loc strong { color: #444; }
+
+  /* figure table */
+  .figures { margin: 1rem 0; }
+  .figures table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    font-size: .88rem;
+  }
+  .figures th, .figures td { padding: .55rem .75rem; text-align: left; border-bottom: 1px solid #eef0f4; }
+  .figures th { background: #302b63; color: #fff; font-weight: 600; }
+  .figures tr:hover td { background: #f8f9fb; }
+
+  /* overview table */
+  .overview-wrap { overflow-x: auto; margin-bottom: 2rem; }
+  .overview-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    font-size: .88rem;
+  }
+  .overview-wrap th, .overview-wrap td { padding: .6rem .8rem; text-align: left; border-bottom: 1px solid #eef0f4; }
+  .overview-wrap th { background: #302b63; color: #fff; font-weight: 600; white-space: nowrap; }
+  .overview-wrap tr:hover td { background: #f8f9fb; }
+  .yes { color: #27ae60; font-weight: 700; }
+  .partial { color: #e67e22; font-weight: 700; }
+
+  /* special box */
+  .box {
+    background: #e8f0fe;
+    border-left: 4px solid #302b63;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    font-size: .92rem;
+  }
+  .box strong { color: #302b63; }
+
+  /* walk cue */
+  .walk-cue {
+    font-size: .82rem;
+    color: #888;
+    font-style: italic;
+    padding: .6rem 1rem;
+    background: #f8f9fb;
+    border-radius: 8px;
+    margin-top: .5rem;
+  }
+  .walk-cue::before { content: "🚶 "; }
+
+  /* footer */
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: .85rem;
+    color: #888;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    header h1 { font-size: 1.3rem; }
+    .stop-head { flex-wrap: wrap; }
+    .stop-head .periode { white-space: normal; margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Van Parisii tot Napoleon</h1>
+  <p>2000 Jaar Parijs in één Wandelroute — Chronologisch, langs fysieke overblijfselen</p>
+  <div class="meta">
+    <span>📍 Start: Métro Jussieu</span>
+    <span>🏁 Einde: Métro Concorde</span>
+    <span>⏱ ~3 uur / ~4 km</span>
+    <span>📍 <a href="paris-chronological-route.html" style="color:#80b5ff;">Bekijk kaart</a></span>
+    <span>🗺️ <a href="https://www.google.com/maps/dir/48.8451,2.3525/48.8475,2.3490/48.8499,2.3465/48.8507,2.3449/48.8532,2.3482/48.8530,2.3498/48.8554,2.3448/48.8562,2.3450/48.8573,2.3416/48.8603,2.3376/48.8618,2.3329/48.8645,2.3265/48.8656,2.3210?travelmode=walking" style="color:#80b5ff;" target="_blank">Google Maps route</a></span>
+  </div>
+</header>
+
+<!-- Overview table -->
+<div class="overview-wrap">
+  <h2 style="font-size:1.2rem;margin-bottom:.6rem;">Routeoverzicht</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Locatie</th><th>Periode</th><th>Remnant</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Arènes de Lutèce</td><td>Romeins (1e eeuw)</td><td><span class="yes">Originele stenen</span></td></tr>
+      <tr><td>2</td><td>Stadsmuur Philippe Auguste</td><td>Middeleeuwen (1190-1215)</td><td><span class="yes">Muurfragment</span></td></tr>
+      <tr><td>3</td><td>Rue Saint-Jacques (Cardo)</td><td>Romeins</td><td><span class="yes">Stratenpatroon</span></td></tr>
+      <tr><td>4</td><td>Thermes de Cluny</td><td>Romeins (1e-3e eeuw)</td><td><span class="yes">Intact gewelf</span></td></tr>
+      <tr><td>5</td><td>Parvis Notre-Dame / Crypte</td><td>Parisii → Romeins → Middeleeuwen</td><td><span class="partial">Museum</span></td></tr>
+      <tr><td>6</td><td>Notre-Dame (exterieur)</td><td>Middeleeuwen (1163-1345)</td><td><span class="partial">Restauratie</span></td></tr>
+      <tr><td>7</td><td>Sainte-Chapelle</td><td>Middeleeuwen (1242-1248)</td><td><span class="yes">Puik bewaard</span></td></tr>
+      <tr><td>8</td><td>Conciergerie</td><td>Middeleeuwen + Revolutie</td><td><span class="yes">Dubbel verhaal</span></td></tr>
+      <tr><td>9</td><td>Pont Neuf + Place Dauphine</td><td>Renaissance (1607)</td><td><span class="yes">Compleet</span></td></tr>
+      <tr><td>10</td><td>Louvre — Cour Carrée</td><td>Middeleeuwen → Klassiek</td><td><span class="yes">Museum</span></td></tr>
+      <tr><td>11</td><td>Arc de Triomphe du Carrousel</td><td>Napoleon (1806-1808)</td><td><span class="yes">Origineel</span></td></tr>
+      <tr><td>12</td><td>Tuileries (paleisplek)</td><td>Revolutie (1792)</td><td><span class="partial">Tuin resteert</span></td></tr>
+      <tr><td>13</td><td>Place de la Concorde</td><td>Revolutie — Guillotine</td><td><span class="yes">Plein + obelisk</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Google Maps embed preview -->
+<div style="margin-bottom:2rem;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+  <iframe src="https://maps.google.com/maps?q=48.856,2.337&z=14&output=embed"
+          width="100%" height="350" style="border:0;display:block;" loading="lazy"></iframe>
+</div>
+
+<!-- Stop 1 -->
+<div class="stop red">
+  <div class="stop-head"><span class="num">1</span>Arènes de Lutèce<span class="periode">Romeins (1e eeuw)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> 49 Rue Monge, 75005 — Métro Jussieu</div>
+    <p>Het Gallo-Romeinse amfitheater van Lutetia bood plaats aan 15.000 toeschouwers. Ontdekt in 1869 tijdens bouwwerkzaamheden. De originele stenen arena en tribunes zijn nog zichtbaar. Hier vochten gladiatoren en werden wilde dieren getoond.</p>
+    <div class="walk-cue">Loop noordwaarts via de Rue Monge, sla rechtsaf de Rue des Écoles in, dan links de Rue Clovis in (~7 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop brown">
+  <div class="stop-head"><span class="num">2</span>Stadsmuur van Philippe Auguste (Rue Clovis)<span class="periode">Middeleeuwen (1190-1215)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Rue Clovis 1–5, 75005</div>
+    <p>Fragment van de eerste stadsmuur van Parijs, gebouwd door koning Philippe Auguste tussen 1190 en 1215. De muur was ~5 km lang, 9–10 m hoog, met torens om de ~60 m. Hij omsloot 250 hectare — het middeleeuwse Parijs voor het eerst ommuurd.</p>
+    <p>Net als het gelijktijdig gebouwde Louvre-fort (1190) was de muur een machtsinstrument van de Capetingen. Het fragment op Rue Clovis is een van de best bewaarde resten, met een identificeerende plaquette "Reste de l'Enceinte / Philippe Auguste / XII<sup>e</sup> siècle".</p>
+    <div class="walk-cue">Loop noordwaarts via de Rue Descartes; steek de Rue des Écoles over naar de Rue Saint-Jacques (~3 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 (was 12) -->
+<div class="stop red">
+  <div class="stop-head"><span class="num">3</span>Rue Saint-Jacques (Cardo)<span class="periode">Romeins</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Rue Saint-Jacques, 75005</div>
+    <p>De Rue Saint-Jacques volgt exact de Romeinse <em>cardo maximus</em> — de noord-zuidhoofdas van Lutetia. Dit is een van de oudste nog in gebruik zijnde straten van Parijs. De Romeinse weg liep van de brug over de Seine (bij de huidige Petit Pont) naar het zuiden, richting Lyon.</p>
+    <div class="walk-cue">Loop noordwaarts naar Boulevard Saint-Germain, dan links naar het Musée de Cluny (~5 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop red">
+  <div class="stop-head"><span class="num">4</span>Thermes de Cluny<span class="periode">Romeins (1e-3e eeuw)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> 6 Place Paul Painlevé, 75005 — Métro Cluny-La Sorbonne</div>
+    <p>De Romeinse badhuizen van Lutetia — het <em>frigidarium</em> (koudbadzaal) heeft een intact gewelf van 15 meter hoog, een van de best bewaarde Romeinse ruimtes ten noorden van de Alpen. Nu onderdeel van het Musée de Cluny (middeleeuwse kunst). De thermen werden rond 200 na Chr. gebouwd en bleven in gebruik tot de 5e eeuw.</p>
+    <div class="walk-cue">Loop via Boulevard Saint-Michel en Pont Saint-Michel naar het Parvis Notre-Dame (~12 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop orange">
+  <div class="stop-head"><span class="num">5</span>Parvis Notre-Dame / Crypte / Point Zéro<span class="periode">Parisii → Romeins → Middeleeuwen</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Place Jean-Paul II, 75004 — Métro Cité</div>
+    <p>Dit plein bevat de volledige gelaagdheid van Parijs:</p>
+    <p><strong>Parisii</strong> — de Keltische stam die Lutetia bewoonde vóór Caesar.<br>
+    <strong>Romeins</strong> — funderingen van de Romeinse stad, zichtbaar in de crypte.<br>
+    <strong>Middeleeuwen</strong> — de kathedraal Notre-Dame.</p>
+    <p><strong>Point Zéro:</strong> De bronzen plaat op het plein is het officiële nulpunt van Frankrijk — alle afstanden naar Parijs worden hiervandaan gemeten. De <strong>Crypte Archéologique</strong> (onder het plein) toont de opgravingen van de Romeinse kade, verwarming en straten.</p>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop brown">
+  <div class="stop-head"><span class="num">6</span>Notre-Dame (exterieur)<span class="periode">Middeleeuwen (1163-1345)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Parvis Notre-Dame — Place Jean-Paul II, 75004</div>
+    <p>Gotisch meesterwerk gebouwd in opdracht van bisschop Maurice de Sully. De bouw duurde 180 jaar. Belangrijke kenmerken:</p>
+    <p><strong>Roosvensters:</strong> Drie reusachtige glas-in-loodramen (13e eeuw).<br>
+    <strong>Luchtbogen:</strong> Noodzakelijk voor de hoge gewelven, een gotische innovatie.<br>
+    <strong>Brand 2019:</strong> De spits en het dak brandden af; restauratie is bijna voltooid.</p>
+    <div class="walk-cue">Loop om de kathedraal heen naar de zuidkant; volg de Quai aux Fleurs naar Sainte-Chapelle (~8 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop brown">
+  <div class="stop-head"><span class="num">7</span>Sainte-Chapelle<span class="periode">Middeleeuwen (1242-1248)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> 10 Boulevard du Palais, 75001 — Métro Cité</div>
+    <p>Koninklijke kapel gebouwd door Lodewijk IX (Saint Louis) om de relikwieën van de <strong>Doornenkroon</strong> te huisvesten — aangekocht van de Byzantijnse keizer voor een fortuin (meer dan de bouw van de kapel). De <strong>15 meter hoge glas-in-loodramen</strong> tonen 1.113 scènes uit het Oude en Nieuwe Testament. Gebouwd in slechts 6 jaar — razendsnel voor gotische architectuur.</p>
+    <div class="walk-cue">Loop via Boulevard du Palais naar de Conciergerie (~3 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop brown">
+  <div class="stop-head"><span class="num">8</span>Conciergerie<span class="periode">Middeleeuwen + Franse Revolutie</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> 2 Boulevard du Palais, 75001 — Métro Cité</div>
+    <p>Oorspronkelijk onderdeel van het koninklijk paleis (Palais de la Cité). De <strong>Salle des Gens d'Armes</strong> (14e eeuw) is een van de grootste middeleeuwse gotische zalen van Europa.</p>
+    <p><strong>Tijdens de Revolutie (1793-1794):</strong> Omgebouwd tot gevangenis van het Revolutionair Tribunaal. Beroemde gevangenen:</p>
+    <p><strong>Marie Antoinette</strong> — verbleef hier 76 dagen voor haar executie.<br>
+    <strong>Robespierre</strong> — wachtte hier op zijn eigen dood onder de guillotine.<br>
+    <strong>Danton</strong> — <em>"Toon mijn hoofd aan het volk, het is het waard."</em></p>
+    <p>Ongeveer 2.600 gevangenen werden hiernaartoe gebracht — 90% eindigde onder de guillotine.</p>
+    <div class="walk-cue">Loop via Boulevard du Palais, over de Pont Neuf (~10 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop green">
+  <div class="stop-head"><span class="num">9</span>Pont Neuf + Place Dauphine<span class="periode">Renaissance (1607)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Pont Neuf, 75001 — Métro Pont Neuf</div>
+    <p><strong>Pont Neuf ("Nieuwe Brug"):</strong> De oudste nog bestaande brug van Parijs (geopend 1607). Eerste brug zonder huizen erop — een revolutie op zich. <strong>Hendrik IV</strong> ruiterstandbeeld op het plein. De brug was het sociale hart van Parijs tot de 19e eeuw: marktkramen, straatartiesten, zakkenrollers.</p>
+    <p><strong>Place Dauphine:</strong> Het eerste koninklijke plein van Parijs, aangelegd door Hendrik IV. Driehoekig, symmetrisch, met baksteen-en-zandsteen gevels.</p>
+    <div class="walk-cue">Volg de Quai du Louvre (~8 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop blue">
+  <div class="stop-head"><span class="num">10</span>Louvre — Cour Carrée<span class="periode">Middeleeuwen → Klassiek</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Cour Carrée, Musée du Louvre, 75001 — Métro Palais-Royal</div>
+    <p>Het Louvre begon als een <strong>burcht</strong> van koning Philippe Auguste (1190), gebouwd ter verdediging van de westelijke stadsmuur. De ronde donjon en funderingen zijn zichtbaar in het <strong>middeleeuwse Louvre</strong> (Sully-vleugel, -1 niveau).</p>
+    <p><strong>Fasering:</strong><br>
+    1190: Versterkte burcht, onderdeel van stadsmuur<br>
+    16e eeuw: Frans I herbouwde het als renaissancepaleis<br>
+    17e eeuw: Lodewijk XIV voltooide de Cour Carrée<br>
+    1793: Openging als museum<br>
+    1989: I.M. Pei's glazen piramide</p>
+    <div class="walk-cue">Loop door de Cour Napoléon naar de Arc du Carrousel (~5 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop purple">
+  <div class="stop-head"><span class="num">11</span>Arc de Triomphe du Carrousel<span class="periode">Napoleon (1806-1808)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Place du Carrousel, 75001 (tussen Louvre en Tuileries)</div>
+    <p>Gebouwd ter ere van de <strong>Grande Armée</strong> en Napoleons overwinningen. De triomfboog is 19 meter hoog, geïnspireerd op de Boog van Septimius Severus in Rome. Oorspronkelijk bekroond met de <strong>quadriga van San Marco</strong> (paarden van Venetië) — roofkunst uit Venetië. Na Napoleons val zijn de originele paarden teruggegeven; wat nu bovenop staat is een kopie.</p>
+    <div class="walk-cue">Loop door de Tuilerieën naar de Place de la Concorde (~10 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop orange">
+  <div class="stop-head"><span class="num">12</span>Tuileries — Paleisplek<span class="periode">Franse Revolutie (1792)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Jardin des Tuileries, 75001 — Métro Tuileries</div>
+    <p><strong>Hier stond het Tuilerieënpaleis</strong> — de koninklijke residentie. Op <strong>10 augustus 1792</strong> bestormden revolutionairen het paleis, de koninklijke familie (Lodewijk XVI, Marie Antoinette) vluchtte naar de Assemblée. Dit was het einde van de monarchie. Het paleis bleef staan tot <strong>1883</strong>, toen het werd gesloopt. Alleen de tuin resteert.</p>
+    <div class="walk-cue">Loop verder westwaarts (~5 min).</div>
+  </div>
+</div>
+
+<!-- Stop 13 -->
+<div class="stop orange">
+  <div class="stop-head"><span class="num">13</span>Place de la Concorde<span class="periode">Franse Revolutie — Guillotine (1793-1794)</span></div>
+  <div class="stop-body">
+    <div class="loc"><strong>Locatie:</strong> Place de la Concorde, 75008 — Métro Concorde</div>
+    <p>Plaats van <strong>1.343 guillotine-executies</strong> tijdens de Terreur (1793-1794). Belangrijkste slachtoffers:</p>
+    <p><strong>Lodewijk XVI</strong> (21 januari 1793)<br>
+    <strong>Marie Antoinette</strong> (16 oktober 1793)<br>
+    <strong>Danton</strong> (5 april 1794)<br>
+    <strong>Robespierre</strong> (28 juli 1794)</p>
+    <p>De <strong>Obelisk van Luxor</strong> (3.300 jaar oud, geschenk van Egypte, 1836) staat nu in het midden. De acht <strong>vrouwenbeelden</strong> rond het plein stellen Franse steden voor.</p>
+    <p><strong>🏁 Einde route</strong> — Métro Concorde (lijnen 1, 8, 12).</p>
+  </div>
+</div>
+
+<!-- Historische Figuren -->
+<h2 class="section-title">Verweven Historische Figuren</h2>
+<div class="figures">
+  <table>
+    <thead><tr><th>Figuur</th><th>Behandeld bij</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Julius Caesar</strong></td><td>Stop 1</td><td>Veroverde Lutetia, 52 v.Chr.</td></tr>
+      <tr><td><strong>Maurice de Sully</strong></td><td>Stop 6</td><td>Bisschop, startte bouw Notre-Dame</td></tr>
+      <tr><td><strong>Philippe Auguste</strong></td><td>Stops 2, 6, 10</td><td>Bouwde stadsmuur, voltooide Notre-Dame</td></tr>
+      <tr><td><strong>Lodewijk IX (Saint Louis)</strong></td><td>Stop 7</td><td>Bouwde Sainte-Chapelle voor de Doornenkroon</td></tr>
+      <tr><td><strong>Hendrik IV</strong></td><td>Stop 9</td><td>Eenheid na godsdienstoorlogen, Pont Neuf</td></tr>
+      <tr><td><strong>Lodewijk XIV</strong></td><td>Stop 10</td><td>Voltooide Cour Carrée, verhuisde naar Versailles</td></tr>
+      <tr><td><strong>Marie Antoinette</strong></td><td>Stops 8, 12, 13</td><td>Gevangen in Conciergerie → onthoofd op Concorde</td></tr>
+      <tr><td><strong>Robespierre / Danton</strong></td><td>Stops 8, 13</td><td>Richtten Terreur in, stierven zelf onder guillotine</td></tr>
+      <tr><td><strong>Napoleon</strong></td><td>Stop 11</td><td>Keizerrijk, Arc du Carrousel</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <p>Route ontwikkeld voor Nederlandstalige rondleidingen in Parijs. Elk station heeft een fysiek overblijfsel — geen "hier stond ooit," maar "hier zie je het nog."</p>
+  <p style="margin-top:.3rem;">Start: Métro Jussieu · Einde: Métro Concorde · <a href="paris-chronological-route.html">Interactieve kaart</a> · <a href="https://www.google.com/maps/dir/48.8451,2.3525/48.8475,2.3490/48.8499,2.3465/48.8507,2.3449/48.8532,2.3482/48.8530,2.3498/48.8554,2.3448/48.8562,2.3450/48.8573,2.3416/48.8603,2.3376/48.8618,2.3329/48.8645,2.3265/48.8656,2.3210?travelmode=walking" target="_blank">Google Maps route</a></p>
+</footer>
+
+</div>
+</body>
+</html>

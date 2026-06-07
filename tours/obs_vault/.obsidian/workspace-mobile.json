@@ -1,0 +1,201 @@
+{
+  "main": {
+    "id": "c4d8682fb0d23ac0",
+    "type": "split",
+    "children": [
+      {
+        "id": "aaa1fe7c871b4ba3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0583371a83a0b34b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "stops/stop-01-arenes-de-lutece.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "stop-01-arenes-de-lutece"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "607be005c2515dd4",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "660cf79c0004230c",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "285b7ebe0bed6791",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "bfcf853d799ca1e4",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "b74e1681d697efd0",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "All properties"
+        }
+      },
+      {
+        "id": "917f68f8cf6b3377",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "24645050802d05bc",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "788df4a6b77a78ff",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "00-wandelroute.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "7f1f5ab7ff2da19d",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "00-wandelroute.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "c14efa0155e4aee7",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "00-wandelroute.md",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "0583371a83a0b34b",
+  "lastOpenFiles": [
+    "00-wandelroute.md",
+    "stops/stop-02-philippe-auguste-muur.md",
+    "index.md",
+    "periodes/commune-van-parijs.md",
+    "periodes/franse-revolutie.md",
+    "periodes/tweede-keizerrijk.md",
+    "concepten/haussmannisation.md",
+    "personen/haussmann.md",
+    "personen/viollet-le-duc.md",
+    "stops/stop-05-notre-dame.md",
+    "stops/stop-04-parvis-notre-dame.md",
+    "concepten/luchtboog.md",
+    "stops/stop-03-thermes-de-cluny.md",
+    "stops/stop-02-rue-saint-jacques.md",
+    "stops/stop-01-arenes-de-lutece.md",
+    "kaart.md",
+    "periodes/romeins-gallie.md",
+    "plaatsen/lutetia.md",
+    "periodes/capetingen.md",
+    "plaatsen/sorbonne.md",
+    "plaatsen/ile-de-la-cite.md",
+    "personen/lodewijk-xiv.md",
+    "personen/jeanne-d-arc.md",
+    "templates/stop.md",
+    "stops/stop-07-conciergerie.md",
+    "plaatsen/versailles.md"
+  ]
+}

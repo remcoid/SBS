@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Genereert een interactieve kaart van de chronologische Parijs-wandeling.
+Output: paris-chronological-route.html — standalone, geen dependencies nodig."""
+
+import json
+
+stops = [
+    (1, "Arenes de Lutece", "Romeins (1e eeuw)", "red",
+     48.8451, 2.3525,
+     "Gallo-Romeins amfitheater — 15.000 zitplaatsen, ontdekt 1869. Originele stenen arena."),
+
+    (2, "Stadsmuur Philippe Auguste (Rue Clovis)", "Middeleeuwen (1190-1215)", "#8B4513",
+     48.8475, 2.3490,
+     "Fragment van de eerste stadsmuur van Parijs. 5 km lang, 9-10 m hoog, gebouwd door Philippe Auguste."),
+
+    (3, "Rue Saint-Jacques (Cardo)", "Romeins", "red",
+     48.8499, 2.3465,
+     "Volgt de Romeinse cardo maximus — de noord-zuid hoofdas van Lutetia."),
+
+    (4, "Thermes de Cluny", "Romeins (1e-3e eeuw)", "red",
+     48.8507, 2.3449,
+     "Romeins badhuis met intact frigidarium-gewelf. Nu Musee de Cluny."),
+
+    (5, "Parvis Notre-Dame / Point Zero", "Parisii -> Romeins -> Middeleeuwen", "orange",
+     48.8532, 2.3482,
+     "Keltische nederzetting, Romeinse funderingen, gotische kathedraal. Point Zero = middelpunt Frankrijk."),
+
+    (6, "Notre-Dame (exterieur)", "Middeleeuwen (1163-1345)", "#8B4513",
+     48.8530, 2.3498,
+     "Gotisch meesterwerk. Gebouwd over 180 jaar, initiatief van bisschop Maurice de Sully."),
+
+    (7, "Sainte-Chapelle", "Middeleeuwen (1242-1248)", "#8B4513",
+     48.8554, 2.3448,
+     "Koninklijke kapel van Lodewijk IX. 15 meter glas-in-lood, gebouwd voor de Doornenkroon."),
+
+    (8, "Conciergerie", "Middeleeuwen + Revolutie", "#8B4513",
+     48.8562, 2.3450,
+     "Gotische paleiszaal (14e eeuw). Tijdens Revolutie: gevangenis voor Marie Antoinette, Revolutionair Tribunaal."),
+
+    (9, "Pont Neuf + Place Dauphine", "Renaissance (1607)", "green",
+     48.8573, 2.3416,
+     "Oudste nog bestaande brug van Parijs. Hendrik IV ruiterstandbeeld. Eerste koninklijke plein."),
+
+    (10, "Louvre - Cour Carree", "Middeleeuwen -> Klassiek", "#1E90FF",
+     48.8603, 2.3376,
+     "Philippe Auguste's burcht (1190) -- deel van eerste stadsmuur. Nu Louvre Museum."),
+
+    (11, "Arc de Triomphe du Carrousel", "Napoleon (1806-1808)", "purple",
+     48.8618, 2.3329,
+     "Ter ere van de Grande Armee. Bekroond met de quadriga van San Marco (kopie)."),
+
+    (12, "Tuileries - Paleisplek (gesloopt 1883)", "Revolutie (1792)", "orange",
+     48.8645, 2.3265,
+     "Hier stond het Tuilerieenpaleis. Bestormd 10 augustus 1792, koninklijke familie gevangen. Gesloopt in 1883."),
+
+    (13, "Place de la Concorde", "Revolutie - Guillotine", "orange",
+       48.8656, 2.3210,
+       "Hier stond de guillotine: 1.343 executies. Lodewijk XVI, Marie Antoinette, Robespierre, Danton."),
+]
+
+HEAD = """<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronologische Parijs-wandeling — Kaart</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:#1a1a2e; }
+  #map { width:100vw; height:100vh; }
+  .legend {
+    background: rgba(255,255,255,.95);
+    padding: .7rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    font-size: .82rem;
+    line-height: 1.6;
+  }
+  .legend i { width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:.4rem; }
+  .legend strong { font-size:.9rem; }
+  .leaflet-popup-content { font-size:.85rem; line-height:1.5; min-width:220px; }
+  .popup-num { font-weight:700; color:#302b63; }
+  .popup-periode { font-size:.78rem; color:#888; margin-bottom:.25rem; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+const map = L.map('map').setView([48.856, 2.337], 15);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>, &copy; CARTO',
+  maxZoom: 19,
+}).addTo(map);
+
+const stops = STOPS_JSON;
+
+const colors = {
+  red:    '#e74c3c',
+  orange: '#e67e22',
+  '#8B4513': '#8B4513',
+  green:  '#27ae60',
+  '#1E90FF': '#1E90FF',
+  purple: '#8e44ad',
+};
+
+const mainStops = stops.filter(s => s[0] <= 13);
+
+// Route lijn
+const latlngs = mainStops.map(s => [s[4], s[5]]);
+L.polyline(latlngs, {
+  color: '#555', weight: 3, opacity: 0.6, dashArray: '8,6'
+}).addTo(map);
+
+// Main markers
+mainStops.forEach(s => {
+  const [num, name, periode, color, lat, lon, desc] = s;
+  const col = colors[color] || color;
+  const icon = L.divIcon({
+    className: '',
+    html: `<div style="
+      width:32px;height:32px;border-radius:50%;
+      background:${col};color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;font-size:.85rem;
+      border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);
+    ">${num}</div>`,
+    iconSize: [32,32],
+    iconAnchor: [16,16],
+  });
+  L.marker([lat, lon], { icon })
+    .addTo(map)
+    .bindPopup(`
+      <div class="popup-num">Stop ${num}: ${name}</div>
+      <div class="popup-periode">${periode}</div>
+      <p style="margin-top:.3rem">${desc}</p>
+    `);
+});
+
+// Legenda
+const legend = L.control({ position: 'bottomright' });
+legend.onAdd = function() {
+  const div = L.DomUtil.create('div', 'legend');
+  div.innerHTML = `
+    <strong>Periode</strong><br>
+    <i style="background:#e74c3c"></i> Romeins<br>
+    <i style="background:#e67e22"></i> Parisii / Revolutie<br>
+    <i style="background:#8B4513"></i> Middeleeuwen<br>
+    <i style="background:#27ae60"></i> Renaissance<br>
+    <i style="background:#1E90FF"></i> Klassiek<br>
+    <i style="background:#8e44ad"></i> Napoleon<br>
+  `;
+  return div;
+};
+legend.addTo(map);
+</script>
+</body>
+</html>"""
+
+
+def generate():
+    stops_json = json.dumps(stops, ensure_ascii=False)
+    html = HEAD.replace("STOPS_JSON", stops_json)
+    with open("tours/parisii tot napoleon/paris-chronological-route.html", "w", encoding="utf-8") as f:
+        f.write(html)
+    print("tours/parisii tot napoleon/paris-chronological-route.html gegenereerd — open in browser.")
+
+
+if __name__ == "__main__":
+    generate()

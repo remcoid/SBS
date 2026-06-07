@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paris Walking Tours — GuruWalk (Free / Tip-Based)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* header */
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    border-radius: 16px;
+    color: #fff;
+  }
+  header h1 { font-size: 2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: -.02em; }
+  header p { font-size: 1rem; opacity: .85; }
+  header a { color: #80b5ff; }
+  header .stats { margin-top: .75rem; font-size: .95rem; opacity: .9; }
+  header .stats strong { color: #ffd700; }
+
+  /* info bar */
+  .info-bar {
+    background: #e8f0fe;
+    border-left: 4px solid #0f3460;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    font-size: .95rem;
+  }
+  .info-bar strong { color: #0f3460; }
+
+  /* tour card */
+  .tour { background: #fff; border-radius: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.06); margin-bottom: 1.5rem; overflow: hidden; }
+  .tour-head {
+    background: linear-gradient(135deg, #0f3460, #533483);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+  .tour-head .num {
+    display: inline-block;
+    background: rgba(255,255,255,.2);
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    text-align: center;
+    line-height: 28px;
+    font-size: .85rem;
+    font-weight: 700;
+    margin-right: .6rem;
+  }
+  .tour-head .badge {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    background: #ffd700;
+    color: #1a1a2e;
+    border-radius: 20px;
+    padding: .15rem .65rem;
+    margin-left: .6rem;
+    vertical-align: middle;
+  }
+  .tour-body { padding: 1.25rem 1.5rem; }
+
+  .detail-grid { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; margin-bottom: 1rem; font-size: .92rem; }
+  .detail-grid .lbl { font-weight: 600; color: #555; white-space: nowrap; }
+  .detail-grid .val { color: #1a1a2e; word-break: break-word; }
+  .detail-grid .val a { color: #0f3460; }
+  .detail-grid .val a:hover { text-decoration: underline; }
+
+  .itinerary { margin-top: .25rem; }
+  .itinerary h4 {
+    font-size: .85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #666;
+    margin-bottom: .35rem;
+  }
+  .itinerary ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+  .itinerary ul li {
+    background: #f0f2f5;
+    border-radius: 20px;
+    padding: .2rem .7rem;
+    font-size: .85rem;
+    color: #333;
+  }
+
+  .tags { margin-top: .75rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tag {
+    display: inline-block;
+    font-size: .75rem;
+    font-weight: 600;
+    padding: .15rem .6rem;
+    border-radius: 12px;
+    letter-spacing: .02em;
+  }
+  .tag-cash { background: #fff3cd; color: #856404; }
+  .tag-card { background: #d4edda; color: #155724; }
+  .tag-en { background: #cce5ff; color: #004085; }
+  .tag-es { background: #f8d7da; color: #721c24; }
+  .tag-fr { background: #e2d9f3; color: #4a1a7a; }
+  .tag-wheelchair { background: #d1ecf1; color: #0c5460; }
+  .tag-nosteps { background: #f8d7da; color: #721c24; }
+
+  .provider-info {
+    margin-top: .75rem;
+    padding: .6rem .8rem;
+    background: #f8f9fb;
+    border-radius: 8px;
+    font-size: .85rem;
+    color: #555;
+  }
+  .provider-info strong { color: #1a1a2e; }
+
+  /* comparison table */
+  .compare-wrap { overflow-x: auto; margin-top: 2.5rem; }
+  .compare-wrap h2 { font-size: 1.3rem; margin-bottom: .75rem; color: #1a1a2e; }
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  table.compare th, table.compare td { padding: .65rem .75rem; text-align: left; border-bottom: 1px solid #eef0f4; }
+  table.compare th {
+    background: #0f3460;
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  table.compare tr:hover td { background: #f8f9fb; }
+  table.compare .stars { color: #e6a800; }
+  table.compare a { color: #0f3460; }
+
+  /* footer */
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: .85rem;
+    color: #888;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    header h1 { font-size: 1.5rem; }
+    .tour-head { font-size: 1rem; }
+    .tour-body { padding: 1rem; }
+    .detail-grid { grid-template-columns: 1fr; gap: .15rem; }
+    .detail-grid .lbl { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Paris Walking Tours — GuruWalk</h1>
+  <p>Free / tip-based walking tours with local guides • <a href="https://www.guruwalk.com/paris">guruwalk.com/paris</a></p>
+  <div class="stats"><strong>★ 4.83</strong> average • 39,874 reviews • 106 tours available across 5 guide companies</div>
+</header>
+
+<div class="info-bar">
+  <strong>How GuruWalk works:</strong> All tours are free to book — no upfront payment. At the end, you tip your guide based on satisfaction (recommended €15–50 per person). Free cancellation. Most tours run rain or shine.
+</div>
+
+<!-- 1 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">1</span>Essential Paris City Center Tour <span class="badge">Recommended</span></div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.91 (2,272 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h15m — 3.0 km — 10 stops</span>
+      <span class="lbl">Provider</span><span class="val">StellarTours (PRO, since 2022)</span>
+      <span class="lbl">Meeting</span><span class="val">Fontaine Saint-Michel, Place Saint-Michel — bright green umbrella</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/44678-essential-paris-city-center-tour">guruwalk.com/walks/44678</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Place Saint-Michel</li><li>Notre-Dame</li><li>Île de la Cité</li><li>Place Dauphine</li><li>Pont Neuf</li><li>Louvre Pyramid</li><li>Tuileries Gardens</li><li>Eiffel Tower views</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-es">Spanish</span>
+      <span class="tag tag-card">Card accepted</span>
+      <span class="tag tag-wheelchair">Wheelchair OK</span>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">2</span>Magnificent Montmartre — Artists, Views &amp; Cabarets</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.99 (78 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h — 1.7 km — 12 stops</span>
+      <span class="lbl">Provider</span><span class="val">StellarTours (PRO, since 2022)</span>
+      <span class="lbl">Meeting</span><span class="val">5 Pl. Blanche (Metro Blanche) — green umbrella + StellarTours badge</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/55316-magnificent-montmartre-artists-views-cabarets">guruwalk.com/walks/55316</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Moulin Rouge</li><li>Café des Deux Moulins</li><li>Van Gogh's apartment</li><li>Sacré-Cœur</li><li>Moulin de la Galette</li><li>Picasso's Bateau-Lavoir</li><li>Le Lapin Agile</li><li>La Maison Rose</li><li>Montmartre vineyard</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-fr">French</span>
+      <span class="tag tag-card">Card accepted</span>
+      <span class="tag tag-nosteps">No wheelchair</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">3</span>The Village of Montmartre without the Crowds</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.76 (1,176 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">1h30m — 5.4 km — 18 stops</span>
+      <span class="lbl">Provider</span><span class="val">Charing Cross Tours (PRO, since 2023) — small groups (10–15 avg)</span>
+      <span class="lbl">Meeting</span><span class="val">Metro Blanche — pink vest</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/46480-the-village-of-montmartre-without-the-crowds">guruwalk.com/walks/46480</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Montmartre vineyard</li><li>Sacré-Cœur</li><li>Windmills</li><li>Impressionism birthplace</li><li>Cobblestone streets</li><li>Artists' square</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-cash">Cash only</span>
+      <span class="tag tag-nosteps">No wheelchair</span>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">4</span>Montmartre: Art &amp; History of Bohemian Paris <span class="badge">Recommended</span></div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.99 (943 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h30m — 1.6 km — 10 stops</span>
+      <span class="lbl">Provider</span><span class="val">Vive latino tours (PRO, since 2023)</span>
+      <span class="lbl">Meeting</span><span class="val">Place des Abbesses (Metro Abbesses, Line 12) — black umbrella + iPad</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/49932-montmartre-a-journey-through-the-art-and-history-of-bohemian-paris">guruwalk.com/walks/49932</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Wall of I Love You</li><li>Place Dalida</li><li>Rue de l'Abreuvoir</li><li>Au Lapin Agile</li><li>Place du Tertre</li><li>Dalida's house</li><li>La Maison Rose</li><li>Last vineyard</li><li>Bateau-Lavoir</li><li>Sacré-Cœur view</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-es">Spanish</span>
+      <span class="tag tag-card">Card accepted</span>
+      <span class="tag tag-nosteps">No wheelchair</span>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">5</span>Historic Paris Walking Tour by Walkative!</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.81 (2,494 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h15m — 2.7 km — 9 stops</span>
+      <span class="lbl">Provider</span><span class="val">Walkative! Tours (PRO, since 2024; est. 2007, 3M+ tourists)</span>
+      <span class="lbl">Meeting</span><span class="val">Hôtel de Ville metro exit 5 — yellow umbrella</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/44879-historic-paris-walking-tour-by-walkative">guruwalk.com/walks/44879</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Hôtel de Ville</li><li>Notre-Dame</li><li>Sainte-Chapelle</li><li>Conciergerie</li><li>Pont Neuf</li><li>Pont des Arts</li><li>Louvre history</li><li>Tuileries</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-cash">Cash only</span>
+      <span class="tag tag-wheelchair">Wheelchair OK</span>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">6</span>Paris Time Machine: Untold Stories &amp; Hidden Places</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.96 (53 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">1h45m — 2.0 km — 11 stops</span>
+      <span class="lbl">Provider</span><span class="val">Quentin &amp; Co Walking Tours (PRO, since 2024)</span>
+      <span class="lbl">Meeting</span><span class="val">Parvis de l'Hôtel de Ville — green umbrella</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/59922-paris-time-machine-untold-stories-hidden-places">guruwalk.com/walks/59922</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Hôtel de Ville</li><li>13 November garden</li><li>Hidden medieval houses</li><li>Cannonball marks</li><li>Le Marais</li><li>Local cafés</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-card">Card accepted</span>
+      <span class="tag tag-wheelchair">Wheelchair OK</span>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">7</span>The Majestic Latin Quarter Tour <span class="badge">Recommended</span></div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.94 (313 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h — 2.0 km — 12 stops</span>
+      <span class="lbl">Provider</span><span class="val">StellarTours (PRO, since 2022)</span>
+      <span class="lbl">Meeting</span><span class="val">Fontaine Saint-Michel — green umbrella + StellarTours badge</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/55401-the-majestic-latin-quarter-tour">guruwalk.com/walks/55401</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Rue de la Huchette</li><li>Shakespeare &amp; Co</li><li>Roman baths</li><li>Gothic churches</li><li>Sorbonne</li><li>Panthéon</li><li>Place de la Contrescarpe</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-card">Card accepted</span>
+      <span class="tag tag-wheelchair">Wheelchair OK</span>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">8</span>Latin Quarter Tour by Walkative!</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.72 (338 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h15m — 2.8 km — 7 stops</span>
+      <span class="lbl">Provider</span><span class="val">Walkative! Tours (PRO, since 2024)</span>
+      <span class="lbl">Meeting</span><span class="val">37 Rue de la Bûcherie (Shakespeare &amp; Co) — yellow umbrella</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/46106-latin-quarter-tour-by-walkative">guruwalk.com/walks/46106</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Shakespeare &amp; Company</li><li>Saint-Séverin</li><li>Sorbonne</li><li>Panthéon</li><li>Luxembourg Gardens</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-cash">Cash only</span>
+      <span class="tag tag-nosteps">No wheelchair</span>
+    </div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">9</span>Paris in Revolt! The French Revolution Tour by Walkative!</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.55 (44 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h — 5.8 km — 6 stops</span>
+      <span class="lbl">Provider</span><span class="val">Walkative! Tours (PRO, since 2024)</span>
+      <span class="lbl">Meeting</span><span class="val">Place Colette (Rue Saint-Honoré) — yellow umbrella</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/61607-paris-in-revolt-the-french-revolution-tour-by-walkative">guruwalk.com/walks/61607</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Palais Royal</li><li>Tuileries Palace</li><li>Place Vendôme</li><li>Robespierre's house</li><li>La Madeleine</li><li>Place de la Concorde</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-cash">Cash only</span>
+      <span class="tag tag-wheelchair">Wheelchair OK</span>
+    </div>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">10</span>Le Marais: Hidden Gem, Jewish Quarter with Walkative!</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.68 (199 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">2h — 1.5 km — 6 stops</span>
+      <span class="lbl">Provider</span><span class="val">Walkative! Tours (PRO, since 2024)</span>
+      <span class="lbl">Meeting</span><span class="val">Saint-Paul metro — yellow umbrella</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/55045-le-marais-paris-hidden-gem-jewish-quarter-with-walkative">guruwalk.com/walks/55045</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Hôtel de Sens</li><li>Village Saint-Paul</li><li>Hôtel de Sully</li><li>Victor Hugo's house</li><li>Jewish quarter (Pletzl)</li><li>Medieval walls</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-cash">Cash only</span>
+      <span class="tag tag-nosteps">No wheelchair</span>
+    </div>
+  </div>
+</div>
+
+<!-- 11 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">11</span>Le Marais without the Crowds, the Beating Heart of Paris</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.81 (467 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">1h30m — ~2.0 km — 7 stops</span>
+      <span class="lbl">Provider</span><span class="val">Charing Cross Tours (PRO, since 2023) — small groups</span>
+      <span class="lbl">Meeting</span><span class="val">10 Rue des Nonnains d'Hyères (Metro Saint-Paul) — pink vest</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/54090-le-marais-without-the-crowds-the-beating-heart-of-paris">guruwalk.com/walks/54090</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Hôtel Sully</li><li>Place des Vosges</li><li>Village Saint-Paul</li><li>Jewish Paris</li><li>Aristocratic mansions</li><li>Secluded gardens</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-cash">Cash only</span>
+      <span class="tag tag-wheelchair">Wheelchair OK</span>
+    </div>
+  </div>
+</div>
+
+<!-- 12 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">12</span>"Paris Starts Here" — The Tour for First-Timers</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Rating</span><span class="val">★ 4.78 (98 reviews)</span>
+      <span class="lbl">Duration</span><span class="val">1h30m — 6.7 km — 7 stops</span>
+      <span class="lbl">Provider</span><span class="val">Charing Cross Tours (PRO, since 2023) — small groups</span>
+      <span class="lbl">Meeting</span><span class="val">Île de la Cité, horseman statue in front of Notre-Dame — pink vest</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.guruwalk.com/walks/55970-paris-starts-here-the-tour-for-first-timers-small-group-from-notre-dame-to-louvre">guruwalk.com/walks/55970</a></span>
+    </div>
+    <div class="itinerary">
+      <h4>Itinerary highlights</h4>
+      <ul>
+        <li>Notre-Dame</li><li>Point Zero</li><li>Sainte-Chapelle</li><li>Conciergerie</li><li>Pont Neuf</li><li>Pont des Arts</li><li>Louvre</li><li>Paris underground</li>
+      </ul>
+    </div>
+    <div class="tags">
+      <span class="tag tag-en">English</span>
+      <span class="tag tag-cash">Cash only</span>
+      <span class="tag tag-nosteps">No wheelchair</span>
+    </div>
+  </div>
+</div>
+
+<!-- comparison table -->
+<div class="compare-wrap">
+  <h2>Quick Comparison</h2>
+  <table class="compare">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Tour</th>
+        <th>Rating</th>
+        <th>Duration</th>
+        <th>Language</th>
+        <th>Provider</th>
+        <th>Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><a href="https://www.guruwalk.com/walks/44678-essential-paris-city-center-tour">Essential Paris City Center</a></td><td class="stars">★ 4.91</td><td>2h15m</td><td>EN, ES</td><td>StellarTours</td><td>Card</td></tr>
+      <tr><td>2</td><td><a href="https://www.guruwalk.com/walks/55316-magnificent-montmartre-artists-views-cabarets">Magnificent Montmartre</a></td><td class="stars">★ 4.99</td><td>2h</td><td>EN, FR</td><td>StellarTours</td><td>Card</td></tr>
+      <tr><td>3</td><td><a href="https://www.guruwalk.com/walks/46480-the-village-of-montmartre-without-the-crowds">Montmartre without crowds</a></td><td class="stars">★ 4.76</td><td>1h30m</td><td>EN</td><td>Charing Cross</td><td>Cash</td></tr>
+      <tr><td>4</td><td><a href="https://www.guruwalk.com/walks/49932-montmartre-a-journey-through-the-art-and-history-of-bohemian-paris">Bohemian Montmartre</a></td><td class="stars">★ 4.99</td><td>2h30m</td><td>EN, ES</td><td>Vive latino</td><td>Card</td></tr>
+      <tr><td>5</td><td><a href="https://www.guruwalk.com/walks/44879-historic-paris-walking-tour-by-walkative">Historic Paris</a></td><td class="stars">★ 4.81</td><td>2h15m</td><td>EN</td><td>Walkative!</td><td>Cash</td></tr>
+      <tr><td>6</td><td><a href="https://www.guruwalk.com/walks/59922-paris-time-machine-untold-stories-hidden-places">Paris Time Machine</a></td><td class="stars">★ 4.96</td><td>1h45m</td><td>EN</td><td>Quentin &amp; Co</td><td>Card</td></tr>
+      <tr><td>7</td><td><a href="https://www.guruwalk.com/walks/55401-the-majestic-latin-quarter-tour">Majestic Latin Quarter</a></td><td class="stars">★ 4.94</td><td>2h</td><td>EN</td><td>StellarTours</td><td>Card</td></tr>
+      <tr><td>8</td><td><a href="https://www.guruwalk.com/walks/46106-latin-quarter-tour-by-walkative">Latin Quarter (Walkative!)</a></td><td class="stars">★ 4.72</td><td>2h15m</td><td>EN</td><td>Walkative!</td><td>Cash</td></tr>
+      <tr><td>9</td><td><a href="https://www.guruwalk.com/walks/61607-paris-in-revolt-the-french-revolution-tour-by-walkative">Paris in Revolt!</a></td><td class="stars">★ 4.55</td><td>2h</td><td>EN</td><td>Walkative!</td><td>Cash</td></tr>
+      <tr><td>10</td><td><a href="https://www.guruwalk.com/walks/55045-le-marais-paris-hidden-gem-jewish-quarter-with-walkative">Le Marais Jewish Quarter</a></td><td class="stars">★ 4.68</td><td>2h</td><td>EN</td><td>Walkative!</td><td>Cash</td></tr>
+      <tr><td>11</td><td><a href="https://www.guruwalk.com/walks/54090-le-marais-without-the-crowds-the-beating-heart-of-paris">Le Marais without crowds</a></td><td class="stars">★ 4.81</td><td>1h30m</td><td>EN</td><td>Charing Cross</td><td>Cash</td></tr>
+      <tr><td>12</td><td><a href="https://www.guruwalk.com/walks/55970-paris-starts-here-the-tour-for-first-timers-small-group-from-notre-dame-to-louvre">Paris Starts Here</a></td><td class="stars">★ 4.78</td><td>1h30m</td><td>EN</td><td>Charing Cross</td><td>Cash</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- also on -->
+<div class="compare-wrap" style="margin-top:1.5rem">
+  <h2>Additional Tours on GuruWalk Paris</h2>
+  <table class="compare">
+    <thead>
+      <tr><th>Tour</th><th>Provider</th><th>Rating</th><th>Duration</th><th>Language</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Perfume Museum &amp; Opera Quarter Tour</td><td>StellarTours</td><td class="stars">★ 5.00</td><td>2h15m</td><td>EN</td></tr>
+      <tr><td>Paris Old Town — Notre Dame &amp; Latin Quarter</td><td>Charing Cross</td><td class="stars">★ 4.89</td><td>1h30m</td><td>EN</td></tr>
+      <tr><td>Montmartre Walking Tour by Walkative!</td><td>Walkative!</td><td class="stars">★ 4.71</td><td>2h15m</td><td>EN</td></tr>
+      <tr><td>Essential Free Tour through the Latin Quarter</td><td>Vive latino</td><td>—</td><td>2h30m</td><td>EN, ES</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:.5rem;font-size:.85rem;color:#666;">Dutch-speaking guides: a dedicated page exists at <a href="https://www.guruwalk.com/ft/nl/parijs">guruwalk.com/ft/nl/parijs</a>, but no specific Dutch-language walking tours were found in the main Paris listings.</p>
+</div>
+
+<footer>
+  <p>Source: <a href="https://www.guruwalk.com/paris">GuruWalk.com/paris</a> — Data collected May 2026. 106 free walking tours available in Paris. All tours are free to book; guides are compensated by tip at the end (recommended €15–50).</p>
+</footer>
+
+</div>
+</body>
+</html>

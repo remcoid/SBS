@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paris Walking Tours — English-Speaking Guide</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* header */
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    border-radius: 16px;
+    color: #fff;
+  }
+  header h1 { font-size: 2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: -.02em; }
+  header p { font-size: 1rem; opacity: .85; }
+  header a { color: #a8b5ff; }
+
+  /* tour card */
+  .tour { background: #fff; border-radius: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.06); margin-bottom: 1.5rem; overflow: hidden; }
+  .tour-head {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+  .tour-head .num {
+    display: inline-block;
+    background: rgba(255,255,255,.2);
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    text-align: center;
+    line-height: 28px;
+    font-size: .85rem;
+    font-weight: 700;
+    margin-right: .6rem;
+  }
+  .tour-body { padding: 1.25rem 1.5rem; }
+
+  .detail-grid { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; margin-bottom: 1rem; font-size: .92rem; }
+  .detail-grid .lbl { font-weight: 600; color: #555; white-space: nowrap; }
+  .detail-grid .val { color: #1a1a2e; word-break: break-word; }
+  .detail-grid .val a { color: #667eea; }
+  .detail-grid .val a:hover { text-decoration: underline; }
+
+  .itinerary { margin-top: .25rem; }
+  .itinerary h3 {
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: .4rem;
+  }
+  .itinerary p, .itinerary ul { font-size: .92rem; color: #333; }
+  .itinerary ul { list-style: none; padding: 0; }
+  .itinerary ul li::before { content: "→ "; color: #667eea; font-weight: 600; }
+
+  .tag {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    padding: .15rem .55rem;
+    border-radius: 999px;
+    margin-right: .3rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+  }
+  .tag-en { background: #e8f5e9; color: #2e7d32; }
+  .tag-multi { background: #fff3e0; color: #e65100; }
+  .tag-sm { background: #e3f2fd; color: #1565c0; }
+  .tag-private { background: #f3e5f5; color: #7b1fa2; }
+  .tag-price { background: #fce4ec; color: #c62828; }
+
+  /* comparison table */
+  .comparison { background: #fff; border-radius: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.06); overflow-x: auto; margin-top: 2rem; }
+  .comparison h2 {
+    font-size: 1.2rem; font-weight: 700; padding: 1rem 1.5rem .5rem;
+    background: #fff; border-bottom: 1px solid #eee;
+  }
+  .comparison table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .comparison th, .comparison td { padding: .6rem .8rem; text-align: left; border-bottom: 1px solid #f0f0f0; }
+  .comparison th { background: #fafafa; font-weight: 600; color: #555; position: sticky; top: 0; }
+  .comparison tr:hover td { background: #f8f9ff; }
+  .comparison a { color: #667eea; }
+
+  .footer {
+    text-align: center;
+    font-size: .85rem;
+    color: #888;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 1rem .5rem; }
+    header h1 { font-size: 1.4rem; }
+    .tour-body { padding: 1rem; }
+    .detail-grid { grid-template-columns: 1fr; gap: .15rem 0; }
+    .detail-grid .lbl { margin-top: .3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Paris Walking Tours</h1>
+  <p>English-Speaking Guide · All tours listed on <a href="https://www.getyourguide.com/paris-l16/walking-tours-tc3/">GetYourGuide</a> · Prices approximate, may vary</p>
+</header>
+
+<!-- 1 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">1</span> Paris Old Town Highlights Guided Walking Tour</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2 / 3 / 4 / 6 hours (options)</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">11 languages</span>EN, FR, DE, IT, PL, RU, ES, ZH, JA, PT, AR</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-private">Private</span> your party only</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~€155</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Not specified (5-Star Licensed Guide)</span>
+      <span class="lbl">Meeting</span><span class="val">Hôtel Louvre Saint-Honoré, 141 Rue St Honoré, 75001 Paris</span>
+      <span class="lbl">Includes</span><span class="val">Private walking tour, timed tickets to Arc de Triomphe (6h) or Panthéon (4h), metro ticket (6h only)</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-old-town-highlights-guided-walking-tour-t499041/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <ul>
+        <li><strong>2h:</strong> Louvre courtyards, Pont des Arts, Pont Neuf, Île de la Cité, Sainte-Chapelle &amp; Conciergerie (exterior), Notre-Dame</li>
+        <li><strong>3h:</strong> above + Saint-Germain-l'Auxerrois, Square René Viviani, Saint Julien-le-Pauvre, Shakespeare &amp; Company</li>
+        <li><strong>4h:</strong> above + Panthéon (skip-the-line)</li>
+        <li><strong>6h:</strong> above + Arc de Triomphe (timed access + rooftop), metro ride</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">2</span> Best Bits of Paris: 40 Favourites Walking Tour</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">5 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Max 10</span> small group</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$63</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Best Bits of Paris</span>
+      <span class="lbl">Meeting</span><span class="val">Metro Saint Germain de Prés (Exit 1, Church side), 147 Bd Saint-Germain, 75006</span>
+      <span class="lbl">Includes</span><span class="val">Walking &amp; metro tour, local guide, metro ticket (day pass or 3 t+ tickets)</span>
+      <span class="lbl">Excludes</span><span class="val">Lunch / snacks / water</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/best-bits-of-paris-40-favourites-walking-tour-5-hours-t779562/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Saint-Germain-des-Prés → Les Deux Magots → Luxembourg Gardens → Panthéon → Sorbonne → Latin Quarter → Seine → Notre-Dame → Louvre (exterior) → Arc de Triomphe → Place du Trocadéro (Eiffel Tower view). Includes crepe/lunch stop.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">3</span> Paris Top Sights Half Day Walking Tour with a Fun Guide</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">5 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span></span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$67</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Paris Top Sights Tours</span>
+      <span class="lbl">Meeting</span><span class="val">Information kiosk in front of metro Anvers station (or 72 Blvd Marguerite de Rochechouart by taxi)</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking &amp; metro tour</span>
+      <span class="lbl">Excludes</span><span class="val">Metro ticket (bring Mobilis day pass or Navigo card)</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-top-sights-half-day-walking-tour-with-a-fun-guide-t637916/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Eiffel Tower → Arc de Triomphe → Louvre → Notre-Dame → Montmartre → Sacré-Cœur (interior). Travel by foot &amp; metro.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">4</span> Île de la Cité and Notre-Dame Walking Tour With Crypt</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">1.5 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">EN, ES</span> English, Spanish</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span></span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$35</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">ExperienceFirst</span>
+      <span class="lbl">Meeting</span><span class="val">Statue of Henri IV on Pont Neuf, 15 Pl. du Pont Neuf, 75001 (orange "ExperienceFirst" sign)</span>
+      <span class="lbl">Includes</span><span class="val">90-min guided tour + self-guided ticket to Archaeological Crypt</span>
+      <span class="lbl">Not suitable for</span><span class="val">Wheelchair users</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-ile-de-la-cite-and-notre-dame-walking-tour-with-crypt-t411810/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Pont Neuf → Statue Henri IV → Place Dauphine → Tour de l'Horloge → Conciergerie → Palais de Justice → Sainte-Chapelle → Flower Market → Notre-Dame → Archaeological Crypt. ~2.5 miles walking. Runs rain or shine.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">5</span> Montmartre Highlights Walking Tour with a Local Guide</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">140 minutes (2h20)</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Max 16</span> small group</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$24</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Paris Tours Experiences</span>
+      <span class="lbl">Meeting</span><span class="val">Place Saint-Pierre (under Sacré-Cœur basilica)</span>
+      <span class="lbl">Child-friendly</span><span class="val">Yes, adapted for kids</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-original-montmartre-walking-tour-with-local-expert-t512414/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Place Saint-Pierre → Wall of Love → Bateau-Lavoir → Moulin de la Galette → Maison Rose → hidden vineyards &amp; courtyards → Place du Tertre. Ends with Sacré-Cœur visit tips.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">6</span> Explore the City of Light on a Magical Walking Tour</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2.5 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">EN, ES</span> English, Spanish</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span></span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$5</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Sandemans Tours</span>
+      <span class="lbl">Meeting</span><span class="val">Fountain on Place Saint-Michel, 75005 Paris</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour, insider tips</span>
+      <span class="lbl">Excludes</span><span class="val">Entry to paid attractions</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-explore-the-city-of-light-on-a-magical-walking-tour-t970678/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Place Saint-Michel → Seine → Notre-Dame → Louvre → Palais de Justice → Institut de France → École des Beaux-Arts. French history, revolutions, art &amp; architecture.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">7</span> Guided Walking Tour from Opera Garnier to Notre-Dame</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">3 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">EN, RU</span> English, Russian</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span></span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$58</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">"My Super Tour"</span>
+      <span class="lbl">Meeting</span><span class="val">Place de l'Hôtel de Ville, 75004 (guide holds "My Super Tour" sign)</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour, professional local guide</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-guided-walking-tour-from-opera-garnier-to-notre-dame-t592198/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Palais Garnier → Place Vendôme → Tuileries Garden → Louvre → Palais-Royal → Pont Neuf → Place Dauphine → Sainte-Chapelle → Conciergerie → Notre-Dame. Flat route designed by an architect.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">8</span> 2-Hour French Revolution Walking Tour</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span></span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$38</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Fat Tire Tours - Paris</span>
+      <span class="lbl">Meeting</span><span class="val">Outside Restaurant Divellec, 18 Rue Fabert, 75005 (metro La Tour-Maubourg, line 8)</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/the-french-revolution-walking-tour-in-paris-t39779/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Les Invalides → Place de la Concorde (Louis XVI's execution) → Tuileries Gardens → Assemblée Nationale. Focused on the French Revolution (1789–1799).</p>
+    </div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">9</span> Le Marais District Guided Walking Tour (with Café &amp; Croissant)</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span></span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$43</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Z-Ocean Tours LLC</span>
+      <span class="lbl">Meeting</span><span class="val">Check booking confirmation</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour, coffee + croissant at a local café</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-le-marais-guided-walking-tour-with-cafe-croissant-t508272/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Hôtel de Ville → Place des Vosges → Maison Victor Hugo → Saint-Paul Saint-Louis → Musée Picasso → Pont Marie → Église Saint-Gervais → Rue des Rosiers → Jardin Anne Frank. Ends with coffee &amp; croissant.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">10</span> Latin Quarter Walking Tour with Local Guide</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">1.5 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span> (private option available)</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~€36</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">ExperienceFirst</span>
+      <span class="lbl">Meeting</span><span class="val">Cité metro (line 4), Place Louis Lépine, 75004 (orange "ExperienceFirst" sign)</span>
+      <span class="lbl">Optional</span><span class="val">Narrated Seine River cruise (valid 1 year)</span>
+      <span class="lbl">Not suitable for</span><span class="val">Wheelchair users (~2.5 miles walking)</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-latin-quarter-selfie-tour-notre-dame-cathedral-t403769/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Saint-Michel Fountain → Rue de la Huchette → Notre-Dame → Saint-Julien-le-Pauvre → Shakespeare &amp; Company → Panthéon → Luxembourg Gardens.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 11 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">11</span> Discovering Le Marais: Guided Walking Tour of Paris</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">EN, FR, IT, ES</span> English, French, Italian, Spanish</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Small group</span> or <span class="tag tag-private">Private</span></span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$56</span> small group / <span class="tag tag-price">~$233</span> private</span>
+      <span class="lbl">Provider</span><span class="val">Guydeez Tours</span>
+      <span class="lbl">Meeting</span><span class="val">26 Rue du Renard, 75004 Paris</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/discovering-le-marais-guided-walking-tour-of-paris-t618387/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Stravinsky Fountain → Centre Pompidou → Rue Sainte-Croix de la Bretonnerie → Église des Billettes → Notre-Dame-des-Blancs-Manteaux. History, architecture &amp; bohemian atmosphere.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 12 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">12</span> Highlights of Parisians' Paris Guided Tour (Right Bank)</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Max 11</span> semi-private</span>
+      <span class="lbl">Price</span><span class="val">Check GetYourGuide</span>
+      <span class="lbl">Provider</span><span class="val">CONNECTING FRANCE</span>
+      <span class="lbl">Meeting</span><span class="val">1 Pl. de l'Hôtel de Ville, 75004 (in front of Bistrot Marguerite, "Connecting France" sign)</span>
+      <span class="lbl">Not suitable for</span><span class="val">Wheelchair users or people with mobility impairments</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-the-highlights-of-the-right-bank-the-golden-age-t563485/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Hôtel de Ville → Les Halles → 1826 covered passage → Palais-Royal → Place Vendôme → Opéra Garnier → Galeries Lafayette (dome). Parisian wealth, glamour &amp; shopping.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 13 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">13</span> Private 5-Hour Paris Tour with Local Guide + Seine Cruise</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">5 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">EN, FR, ES</span> English, French, Spanish</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-private">Private</span> your party only</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$220</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Voilà Tours</span>
+      <span class="lbl">Meeting</span><span class="val">Île de la Cité area (confirmed at booking)</span>
+      <span class="lbl">Includes</span><span class="val">Private walking tour, 1h Seine cruise, metro ride, degree-educated local guide</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/discover-paris-with-a-local-guide-private-5h-tour-t774814/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p><strong>Part 1:</strong> Île de la Cité → Notre-Dame → Conciergerie → Sainte-Chapelle → Pont Neuf → Louvre → Tuileries. <strong>Metro:</strong> short ride. <strong>Part 2:</strong> Montmartre → Sacré-Cœur → artists' ateliers. <strong>Cruise:</strong> 1h Seine (flexible). Seasonal: Christmas lights &amp; markets (Nov–Jan).</p>
+    </div>
+  </div>
+</div>
+
+<!-- 14 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">14</span> Exclusive Walking Guided Tour of the Marais</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Max 5</span> small group</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~€40</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">French Style Lodge and Comfort</span>
+      <span class="lbl">Meeting</span><span class="val">In front of Sarah Bernhardt restaurant</span>
+      <span class="lbl">Bring</span><span class="val">Comfortable shoes, water bottle</span>
+      <span class="lbl">Not allowed</span><span class="val">Pets (except assistance dogs)</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-exclusive-walking-guided-tour-of-the-marais-t725212/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Saint-Jacques Tower → Sainte-Marie church → Hôtel de Ville → Saint Laurent Antique Village → Saint-Paul &amp; Saint-Louis church → private mansions → Hôtel de Sully → Place des Vosges → Victor Hugo's house → Carnavalet museum → Rue des Rosiers → Jardin Anne Frank. Renaissance architecture &amp; hidden mansions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 15 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">15</span> Inside Notre Dame &amp; Île de la Cité Tour (max 5)</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">~2 hours (1h45–2h)</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-en">English only</span></span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Max 5</span> intimate small group</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~$64</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Walks France-Spain</span>
+      <span class="lbl">Meeting</span><span class="val">Place du Parvis Notre-Dame, 75004 Paris</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour, interior visit to Notre-Dame Cathedral</span>
+      <span class="lbl">Not suitable for</span><span class="val">Wheelchair users, mobility impairments, strollers</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/paris-ile-de-la-cite-highlights-guided-tour-seine-cruise-t88235/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Notre-Dame interior (guided, Gothic architecture &amp; restoration) → Sainte-Chapelle (exterior) → Conciergerie (exterior) → Île de la Cité streets. Covers 800+ years of Parisian history.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 16 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">16</span> Latin Quarter Guided Walking Tour — Semi-Private (12ppl max)</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2.5 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">6 languages</span> EN, IT, FR, RU, DE, ES</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Max 12</span> semi-private or private</span>
+      <span class="lbl">Price</span><span class="val">Check GetYourGuide</span>
+      <span class="lbl">Provider</span><span class="val">Babylon Tours</span>
+      <span class="lbl">Meeting</span><span class="val">Metro Cité (line 4), 1 Rue de Lutèce, 75004</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour, professional art historian guide</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/latin-quarter-paris-guided-walking-tour-semi-private-12ppl-m-t59797/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Thermes de Cluny (Roman baths) → Saint-Séverin → Sorbonne → Panthéon → Shakespeare &amp; Company → Luxembourg Gardens. History, art &amp; Left Bank bohemian culture.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 17 -->
+<div class="tour">
+  <div class="tour-head"><span class="num">17</span> Paris Latin Quarter Writers Tour: Hemingway, Sartre &amp; Co</div>
+  <div class="tour-body">
+    <div class="detail-grid">
+      <span class="lbl">Duration</span><span class="val">2 hours</span>
+      <span class="lbl">Guide</span><span class="val"><span class="tag tag-multi">EN, DE</span> English, German</span>
+      <span class="lbl">Group</span><span class="val"><span class="tag tag-sm">Max 10</span> small group</span>
+      <span class="lbl">Price</span><span class="val"><span class="tag tag-price">~€50</span> per person</span>
+      <span class="lbl">Provider</span><span class="val">Not specified</span>
+      <span class="lbl">Meeting</span><span class="val">Shakespeare &amp; Company bookshop area</span>
+      <span class="lbl">Includes</span><span class="val">Guided walking tour, coffee at Café Les Deux Magots, literature-focused guide</span>
+      <span class="lbl">URL</span><span class="val"><a href="https://www.getyourguide.com/paris-l16/life-lessons-in-the-latin-quarter-from-hemingway-to-sartre-t1184453/">View on GetYourGuide</a></span>
+    </div>
+    <div class="itinerary">
+      <h3>Itinerary</h3>
+      <p>Shakespeare &amp; Company (Hemingway, Joyce) → Notre-Dame (Voltaire, Descartes) → Panthéon (Hugo, Curie) → Sorbonne (1968 revolts) → Luxembourg Gardens → Café Les Deux Magots (Sartre, de Beauvoir — coffee included). Literature, philosophy &amp; intellectual history.</p>
+    </div>
+  </div>
+</div>
+
+<!-- comparison table -->
+<div class="comparison">
+  <h2>Quick Comparison</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Tour Name</th><th>Duration</th><th>Price From</th><th>Group</th><th>Guide</th><th>Provider</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><a href="https://www.getyourguide.com/paris-l16/paris-old-town-highlights-guided-walking-tour-t499041/">Old Town Highlights</a></td><td>2–6h</td><td>~€155</td><td>Private</td><td>11 lang</td><td>5-Star Guide</td></tr>
+      <tr><td>2</td><td><a href="https://www.getyourguide.com/paris-l16/best-bits-of-paris-40-favourites-walking-tour-5-hours-t779562/">40 Favourites</a></td><td>5h</td><td>~$63</td><td>Max 10</td><td>EN</td><td>Best Bits of Paris</td></tr>
+      <tr><td>3</td><td><a href="https://www.getyourguide.com/paris-l16/paris-top-sights-half-day-walking-tour-with-a-fun-guide-t637916/">Top Sights Half Day</a></td><td>5h</td><td>~$67</td><td>Small</td><td>EN</td><td>Paris Top Sights Tours</td></tr>
+      <tr><td>4</td><td><a href="https://www.getyourguide.com/paris-l16/paris-ile-de-la-cite-and-notre-dame-walking-tour-with-crypt-t411810/">Île de la Cité &amp; Crypt</a></td><td>1.5h</td><td>~$35</td><td>Small</td><td>EN, ES</td><td>ExperienceFirst</td></tr>
+      <tr><td>5</td><td><a href="https://www.getyourguide.com/paris-l16/paris-original-montmartre-walking-tour-with-local-expert-t512414/">Montmartre Highlights</a></td><td>2h20</td><td>~$24</td><td>Max 16</td><td>EN</td><td>Paris Tours Exp.</td></tr>
+      <tr><td>6</td><td><a href="https://www.getyourguide.com/paris-l16/paris-explore-the-city-of-light-on-a-magical-walking-tour-t970678/">Magical Walking Tour</a></td><td>2.5h</td><td>~$5</td><td>Small</td><td>EN, ES</td><td>Sandemans Tours</td></tr>
+      <tr><td>7</td><td><a href="https://www.getyourguide.com/paris-l16/paris-guided-walking-tour-from-opera-garnier-to-notre-dame-t592198/">Opera → Notre-Dame</a></td><td>3h</td><td>~$58</td><td>Small</td><td>EN, RU</td><td>My Super Tour</td></tr>
+      <tr><td>8</td><td><a href="https://www.getyourguide.com/paris-l16/the-french-revolution-walking-tour-in-paris-t39779/">French Revolution</a></td><td>2h</td><td>~$38</td><td>Small</td><td>EN</td><td>Fat Tire Tours</td></tr>
+      <tr><td>9</td><td><a href="https://www.getyourguide.com/paris-l16/paris-le-marais-guided-walking-tour-with-cafe-croissant-t508272/">Le Marais + Café</a></td><td>2h</td><td>~$43</td><td>Small</td><td>EN</td><td>Z-Ocean Tours</td></tr>
+      <tr><td>10</td><td><a href="https://www.getyourguide.com/paris-l16/paris-latin-quarter-selfie-tour-notre-dame-cathedral-t403769/">Latin Quarter</a></td><td>1.5h</td><td>~€36</td><td>Small</td><td>EN</td><td>ExperienceFirst</td></tr>
+      <tr><td>11</td><td><a href="https://www.getyourguide.com/paris-l16/discovering-le-marais-guided-walking-tour-of-paris-t618387/">Discovering Le Marais</a></td><td>2h</td><td>~$56</td><td>Small/Priv</td><td>EN, FR, IT, ES</td><td>Guydeez Tours</td></tr>
+      <tr><td>12</td><td><a href="https://www.getyourguide.com/paris-l16/paris-the-highlights-of-the-right-bank-the-golden-age-t563485/">Right Bank Highlights</a></td><td>2h</td><td>TBD</td><td>Max 11</td><td>EN</td><td>CONNECTING FRANCE</td></tr>
+      <tr><td>13</td><td><a href="https://www.getyourguide.com/paris-l16/discover-paris-with-a-local-guide-private-5h-tour-t774814/">Private 5h + Cruise</a></td><td>5h</td><td>~$220</td><td>Private</td><td>EN, FR, ES</td><td>Voilà Tours</td></tr>
+      <tr><td>14</td><td><a href="https://www.getyourguide.com/paris-l16/paris-exclusive-walking-guided-tour-of-the-marais-t725212/">Exclusive Marais</a></td><td>2h</td><td>~€40</td><td>Max 5</td><td>EN</td><td>French Style Lodge</td></tr>
+      <tr><td>15</td><td><a href="https://www.getyourguide.com/paris-l16/paris-ile-de-la-cite-highlights-guided-tour-seine-cruise-t88235/">Inside Notre Dame</a></td><td>2h</td><td>~$64</td><td>Max 5</td><td>EN</td><td>Walks France-Spain</td></tr>
+      <tr><td>16</td><td><a href="https://www.getyourguide.com/paris-l16/latin-quarter-paris-guided-walking-tour-semi-private-12ppl-m-t59797/">Latin Quarter Semi-Private</a></td><td>2.5h</td><td>TBD</td><td>Max 12</td><td>6 lang</td><td>Babylon Tours</td></tr>
+      <tr><td>17</td><td><a href="https://www.getyourguide.com/paris-l16/life-lessons-in-the-latin-quarter-from-hemingway-to-sartre-t1184453/">Writers Tour</a></td><td>2h</td><td>~€50</td><td>Max 10</td><td>EN, DE</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Prices are approximate as of May 2026. Always check GetYourGuide for current pricing &amp; availability.<br>
+  All tours offer free cancellation up to 24 hours in advance.
+</div>
+
+</div>
+</body>
+</html>
