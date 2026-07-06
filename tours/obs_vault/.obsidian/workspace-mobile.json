@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "stops/stop-01-arenes-de-lutece.md",
-                "mode": "source",
+                "file": "concepten/terreur.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "stop-01-arenes-de-lutece"
+              "title": "terreur"
             }
           }
         ]
@@ -112,7 +112,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "00-wandelroute.md",
+            "file": "concepten/terreur.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -171,31 +171,34 @@
   },
   "active": "0583371a83a0b34b",
   "lastOpenFiles": [
-    "00-wandelroute.md",
-    "stops/stop-02-philippe-auguste-muur.md",
-    "index.md",
-    "periodes/commune-van-parijs.md",
-    "periodes/franse-revolutie.md",
-    "periodes/tweede-keizerrijk.md",
-    "concepten/haussmannisation.md",
-    "personen/haussmann.md",
-    "personen/viollet-le-duc.md",
-    "stops/stop-05-notre-dame.md",
-    "stops/stop-04-parvis-notre-dame.md",
-    "concepten/luchtboog.md",
-    "stops/stop-03-thermes-de-cluny.md",
-    "stops/stop-02-rue-saint-jacques.md",
-    "stops/stop-01-arenes-de-lutece.md",
-    "kaart.md",
-    "periodes/romeins-gallie.md",
-    "plaatsen/lutetia.md",
-    "periodes/capetingen.md",
-    "plaatsen/sorbonne.md",
-    "plaatsen/ile-de-la-cite.md",
-    "personen/lodewijk-xiv.md",
-    "personen/jeanne-d-arc.md",
-    "templates/stop.md",
-    "stops/stop-07-conciergerie.md",
-    "plaatsen/versailles.md"
+    "personen/adolf-hitler.md",
+    "concepten/terreur.md",
+    "concepten/wet-malraux.md",
+    "personen/ravaillac.md",
+    "plaatsen/les-invalides.md",
+    "personen/gallieni.md",
+    "plaatsen/la-defense.md",
+    "plaatsen/les-halles.md",
+    "concepten/mur-des-fermiers-generaux.md",
+    "personen/sainte-genevieve.md",
+    "personen/rambuteau.md",
+    "personen/st-denys.md",
+    "plaatsen/palais-royal.md",
+    "plaatsen/marais.md",
+    "plaatsen/grands-boulevards.md",
+    "concepten/metrisch-stelsel.md",
+    "personen/napoleon-iii.md",
+    "concepten/doornenkroon.md",
+    "concepten/glas-in-loodramen.md",
+    "plaatsen/place-vendome.md",
+    "periodes/modern-frankrijk.md",
+    "concepten/klokken.md",
+    "concepten/middeleeuwse-bouwmeesters.md",
+    "periodes/wereldoorlogen.md",
+    "plaatsen/pere-lachaise.md",
+    "plaatsen/opera-garnier.md",
+    "tours/parisii_tot_napoleon/stops",
+    "tours/parisii_tot_napoleon",
+    "tours"
   ]
 }
